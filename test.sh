@@ -19,6 +19,36 @@ BOLDMAGENTA="\033[1m\033[35m"
 BOLDCYAN="\033[1m\033[36m"
 BOLDWHITE="\033[1m\033[37m"
 
+function help()
+{
+	echo
+	printf "Usage: bash test.sh [-c, -h] [option] ..."
+	printf "\n\n"
+	printf "Options:\n"
+	printf "\tBuiltins:\n"
+	printf "\t\techo\n"
+	printf "\t\tcd\n"
+	printf "\t\tpwd\n"
+	printf "\t\texport\n"
+	printf "\t\tunset\n"
+	printf "\t\tenv\n"
+	printf "\t\texit\n"
+	printf "\tOthers.\n"
+	printf "\t\tbin\n"
+	printf "\t\tpipes\n"
+	echo
+}
+
+while getopts c:h flag
+do
+    case "${flag}" in
+        c) option=${OPTARG};;
+		h) help;;
+		\?) echo "Error: Invalid option please use -h for help"
+         exit;;
+    esac
+done
+
 function exec_test()
 {
 	TEST1=$(./minishell -c "$@" 2>&1)
@@ -47,64 +77,158 @@ function exec_test()
 	sleep 0.1
 }
 
-printf "$BOLDMAGENTA __  __ _____ _   _ _____  _____ _    _ ______ _      _      \n"
-printf "|  \/  |_   _| \ | |_   _|/ ____| |  | |  ____| |    | |     \n"
-printf "| \  / | | | |  \| | | | | (___ | |__| | |__  | |    | |     \n"
-printf "| |\/| | | | | . \` | | |  \___ \|  __  |  __| | |    | |     \n"
-printf "| |  | |_| |_| |\  |_| |_ ____) | |  | | |____| |____| |____ \n"
-printf "|_|  |_|_____|_| \_|_____|_____/|_|  |_|______|______|______|\n$RESET"
+echo
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#.,@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#@@@@@@@@@@@@@@@@@@@@@@@@(....,@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@ M I N I S H E L L @@@@@@@,.#@@@@@@@@@@@@@@@@@@@@@........@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*....@@@@@@@@@@@@@@@@@@.........,@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#......#@@@@@@@@@@@@@&.........../@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.........@@@@@@@@@@..............@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@...........@@@@@*................@@@@@@@@@@@ T E S T E R @@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&.............,...................@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.................................@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@/,%@@@@@@@@@@.................................%@@@@&&#,...........@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@/................(@@%,......,,%@@@(............................@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@,...........(@/....................*@@,.....................*@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@........,@(...........................(@,.................@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@......@(../@@@&&&@@@@@#................,@...............@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@*...@@@,................,%@%............@,.........../@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@,..../@%........(&@@(.....(@@,........@..........,@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@&@&..................,@@%...&(.......,@..........*@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@&/*.......@/##(...................................&#..............*@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@&....@&...............,@%.......................,@...................,@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@%...       ..,/..@/..............*@..........@.........................#@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@%&      *     @@,@   &(..  *  ................@.....................,@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@*       *|*    (&@         #|#      @*........@*................@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@&              @,@                   @.........&#............@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@%            @,..@                @*.........(%........@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@#.   ,(@@*,....,@%          *@(...........%%..........#@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@*@.......@*..........,(&@#(,.....#&........%(..............,@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@(..@#///,.#%...................,@@/.........#%@@%.................&@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@......&*....@/.......,/(*....................,@*..........*@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@,.....(&..@&...................................&*......@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@.......(*.....................................@*..%@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@...*&@@@@@@@@@&@@@@@@/,...&@/...............#@..@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@.@@&.&@@          &%&@*@@,&@&..%&.......(@@&*.......@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@.@%%%%                  %%&&%%@..(%.......@............%@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@,.@@@*(@@@@@@&&&&&@@@@@#@(,/@@,.,@,......&&..@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@%..........................,@@/.......@*...,@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@/..............................,@......,@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@............................@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@(.......................%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@/................*@&#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 echo
 
-printf $BOLDGREEN"ECHO test$BOLDGREEN$ES_1$RESET\n"
-echo "----------"
-echo
-exec_test 'echo'
-exec_test 'echo bonjour'
-exec_test 'echo lalalala lalalalal alalalalal alalalala'
-exec_test 'echo lalalala                lalalalal      alalalalal alalalala'
-exec_test 'echo Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur.'
-exec_test 'echo -n'
-exec_test 'echo -n bonjour'
-exec_test 'echo -n lalalala lalalalal alalalalal alalalala'
-exec_test 'echo -n lalalala                lalalalal      alalalalal alalalala'
-exec_test 'echo bonjour -n'
-exec_test 'echo -n bonjour -n'
-exec_test '                        echo                     bonjour             je'
-exec_test '                        echo       -n            bonjour             je'
-exec_test 'echo a '' b '' c '' d'
-exec_test 'echo a "" b "" c "" d'
-exec_test 'echo -n a '' b '' c '' d'
-exec_test 'echo -n a "" b "" c "" d'
-exec_test 'echo '' '' '''
-exec_test 'export PATH='/bin:/usr/bin'; Echo bonjour'
-exec_test 'export PATH='/bin:/usr/bin'; eCho bonjour'
-exec_test 'export PATH='/bin:/usr/bin'; ecHo bonjour'
-exec_test 'export PATH='/bin:/usr/bin'; echO bonjour'
-exec_test 'export PATH='/bin:/usr/bin'; EchO bonjour'
-exec_test 'export PATH='/bin:/usr/bin'; eCHo bonjour'
-exec_test 'export PATH='/bin:/usr/bin'; EcHo bonjour'
-exec_test 'export PATH='/bin:/usr/bin'; eChO bonjour'
-exec_test 'export PATH='/bin:/usr/bin'; eChO -e 'bonjo\nur''
-exec_test 'echo -n -n -n -n bonjour'
-exec_test 'echo -nnnnnnnnnnnnnnnnnnnnn bonjour'
-exec_test 'echo -nnnnnnnnnnnnnnnnnnnnn -n -n -n bonjour -n -n'
+function command_echo()
+{
+	printf $BOLDGREEN"ECHO test$BOLDGREEN$ES_1$RESET\n"
+	echo "----------"
+	echo
+	exec_test 'echo'
+	exec_test 'echo bonjour'
+	exec_test 'echo lalalala lalalalal alalalalal alalalala'
+	exec_test 'echo lalalala                lalalalal      alalalalal alalalala'
+	exec_test 'echo Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur.'
+	exec_test 'echo -n'
+	exec_test 'echo -n bonjour'
+	exec_test 'echo -n lalalala lalalalal alalalalal alalalala'
+	exec_test 'echo -n lalalala                lalalalal      alalalalal alalalala'
+	exec_test 'echo bonjour -n'
+	exec_test 'echo -n bonjour -n'
+	exec_test '                        echo                     bonjour             je'
+	exec_test '                        echo       -n            bonjour             je'
+	exec_test 'echo a '' b '' c '' d'
+	exec_test 'echo a "" b "" c "" d'
+	exec_test 'echo -n a '' b '' c '' d'
+	exec_test 'echo -n a "" b "" c "" d'
+	exec_test 'echo '' '' '''
+	exec_test 'export PATH='/bin:/usr/bin'; Echo bonjour'
+	exec_test 'export PATH='/bin:/usr/bin'; eCho bonjour'
+	exec_test 'export PATH='/bin:/usr/bin'; ecHo bonjour'
+	exec_test 'export PATH='/bin:/usr/bin'; echO bonjour'
+	exec_test 'export PATH='/bin:/usr/bin'; EchO bonjour'
+	exec_test 'export PATH='/bin:/usr/bin'; eCHo bonjour'
+	exec_test 'export PATH='/bin:/usr/bin'; EcHo bonjour'
+	exec_test 'export PATH='/bin:/usr/bin'; eChO bonjour'
+	exec_test 'export PATH='/bin:/usr/bin'; eChO -e 'bonjo\nur''
+	exec_test 'echo -n -n -n -n bonjour'
+	exec_test 'echo -nnnnnnnnnnnnnnnnnnnnn bonjour'
+	exec_test 'echo -nnnnnnnnnnnnnnnnnnnnn -n -n -n bonjour -n -n'
+	echo
+}
+function command_cd()
+{
+	echo
+	printf $BOLDGREEN"CD test$BOLDGREEN$ES_1$RESET\n"
+	echo "----------"
+	echo
+	exec_test 'cd .. ; pwd'
+	exec_test 'cd /Users ; pwd'
+	exec_test 'cd ; pwd'
+	exec_test 'mkdir test_dir ; cd test_dir ; rm -rf ../test_dir ; cd . ; pwd ; cd . ; pwd ; cd .. ; pwd'
+	exec_test 'echo $PWD; echo $OLDPWD; cd .; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ..; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ../..; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ../../..; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ../../../..; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ../../../../..; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ../../../../../..; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd /; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ''; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd '' ''; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd '' '' ''; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ' '; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'mkdir d; echo $PWD; echo $OLDPWD; cd d ''; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'mkdir d; echo $PWD; echo $OLDPWD; cd d d; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'mkdir d echo $PWD; echo $OLDPWD; cd d ' '; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'export HOME='/Users/lespinoz'; echo $PWD; echo $OLDPWD; cd $HOME; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd /; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd /.; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd /./; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd /././././; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd //; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ///; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ////; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd //////////////////////////////////////////////////////; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd; echo $OLDPWD'
+	exec_test 'export HOME='/Users/lespinoz'; echo $PWD; echo $OLDPWD; cd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ' /'; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ' / '; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd '                  /'; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd '                  /              '; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd ' // '; pwd; echo $PWD; echo $OLDPWD'
+	exec_test 'echo $PWD; echo $OLDPWD; cd //home; pwd; echo $PWD; echo $OLDPWD '
+	exec_test 'echo $PWD; echo $OLDPWD; cd ' //home'; pwd; echo $PWD; echo $OLDPWD '
+	exec_test 'echo $PWD; echo $OLDPWD; cd '     //home    '; pwd; echo $PWD; echo $OLDPWD'
+	echo
+}
 
+function command_pipe()
+{
+	echo
+	printf $BOLDGREEN"PIPES tests$BOLDGREEN$ES_1$RESET\n"
+	echo "------------"
+	echo
+	exec_test 'cat tests/lorem.txt | grep arcu | cat -e'
+	exec_test 'echo test | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e'
+	exec_test 'cat /dev/random | head -c 100 | wc -c'
+	exec_test 'ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls'
+	exec_test 'ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls'
+	echo
+}
 
-printf $BOLDGREEN"CD test$BOLDGREEN$ES_1$RESET\n"
-echo "----------"
-echo
-exec_test 'cd .. ; pwd'
-exec_test 'cd /Users ; pwd'
-exec_test 'cd ; pwd'
-exec_test 'mkdir test_dir ; cd test_dir ; rm -rf ../test_dir ; cd . ; pwd ; cd . ; pwd ; cd .. ; pwd'
+#BIN
+function command_bin()
+{
+	echo
+	printf $BOLDGREEN"BIN tests$BOLDGREEN$ES_1$RESET\n"
+	echo "---------"
+	echo
+	exec_test "/bin/ls"
+	echo
+}
 
-
-# # PIPE TESTS
-# exec_test 'cat tests/lorem.txt | grep arcu | cat -e'
-# exec_test 'echo test | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e|cat -e'
-# exec_test 'cat /dev/random | head -c 100 | wc -c'
-# exec_test 'ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls'
-# exec_test 'ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls'
 
 # # ENV EXPANSIONS + ESCAPE
 # exec_test 'echo test     \    test'
@@ -161,20 +285,39 @@ exec_test 'mkdir test_dir ; cd test_dir ; rm -rf ../test_dir ; cd . ; pwd ; cd .
 # exec_test 'echo | |'
 # exec_test '<'
 
-# # EXIT
-# exec_test "exit 42"
-# exec_test "exit 42 53 68"
-# exec_test "exit 259"
-# exec_test "exit 9223372036854775807"
-# exec_test "exit -9223372036854775808"
-# exec_test "exit 9223372036854775808"
-# exec_test "exit -9223372036854775810"
-# exec_test "exit -4"
-# exec_test "exit wrong"
-# exec_test "exit wrong_command"
-# exec_test "gdagadgag"
-# exec_test "ls -Z"
-# exec_test "cd gdhahahad"
-# exec_test "ls -la | wtf"
+function command_exit()
+{
+	echo
+	printf $BOLDGREEN"EXIT tests$BOLDGREEN$ES_1$RESET\n"
+	echo "---------"
+	echo
+	exec_test "exit 42"
+	exec_test "exit 42 53 68"
+	exec_test "exit 259"
+	exec_test "exit 9223372036854775807"
+	exec_test "exit -9223372036854775808"
+	exec_test "exit 9223372036854775808"
+	exec_test "exit -9223372036854775810"
+	exec_test "exit -4"
+	exec_test "exit wrong"
+	exec_test "exit wrong_command"
+	exec_test "gdagadgag"
+	exec_test "ls -Z"
+	exec_test "cd gdhahahad"
+	exec_test "ls -la | wtf"
+	echo
+}
 
-# rm lol ls test
+case $option in
+        "echo") command_echo;;
+        "cd") command_cd;;
+		"pipe") command_pipe;;
+		"bin") command_bin;;
+		"exit") command_exit;;
+        "all") command_echo
+			   command_cd
+			   command_bin
+			   command_pipe
+			   command_exit
+			   ;;
+esac
